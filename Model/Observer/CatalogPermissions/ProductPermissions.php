@@ -45,7 +45,9 @@ class ProductPermissions implements ObserverInterface
                 $isVisible = (int) $product->getData('customer_group_permission_' . $customerGroupId);
             }
 
-            $permissions[] = $isVisible ?: $customerGroupId;
+            if ($isVisible) {
+                $permissions[] = $isVisible ?: $customerGroupId;
+            }
         }
 
         if (count($permissions)) {
