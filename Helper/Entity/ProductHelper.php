@@ -1254,6 +1254,11 @@ class ProductHelper
         // Used for merchandising
         $attributesForFaceting[] = 'categoryIds';
 
+        // Set permissions attribute for filtering
+        if ($this->configHelper->isCustomerGroupsEnabled($storeId)) {
+            $attributesForFaceting[] = 'catalog_permissions';
+        }
+
         return $attributesForFaceting;
     }
 
